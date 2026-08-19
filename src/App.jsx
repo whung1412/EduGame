@@ -14,7 +14,7 @@ import StudentResult from "./pages/StudentResult";
 
 function App() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/EduGame">
             <Routes>
                 <Route path="/" element={<Home />} />
 
