@@ -1,0 +1,730 @@
+/* src/styles/StudentGame.css */
+
+
+/* =========================
+   整體
+========================= */
+
+.student-game-page {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--color-blue-light);
+    color: var(--color-dark);
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.student-game-header {
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    background: var(--color-navy);
+}
+
+
+.student-game-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: white;
+
+    font-size: 22px;
+    font-weight: 900;
+}
+
+
+.student-game-logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: var(--color-yellow);
+    color: var(--color-navy);
+
+    font-size: 21px;
+    font-weight: 900;
+}
+
+
+/* 玩家 */
+
+.student-game-player {
+    max-width: 40%;
+
+    overflow: hidden;
+
+    padding: 7px 12px;
+
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   Main
+========================= */
+
+.student-game-main {
+    flex: 1;
+
+    width: min(900px, calc(100% - 50px));
+
+    margin: 0 auto;
+
+    padding: 30px 0 45px;
+}
+
+
+/* =========================
+   題數
+========================= */
+
+.student-game-question-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+}
+
+
+.student-game-question-number {
+    color: var(--color-dark);
+
+    font-size: 18px;
+    font-weight: 900;
+}
+
+
+.student-game-question-count {
+    color: var(--color-orange);
+
+    font-size: 24px;
+    font-weight: 900;
+}
+
+
+.student-game-question-count span {
+    color: var(--color-text-muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   進度條
+========================= */
+
+.student-game-progress {
+    width: 100%;
+    height: 8px;
+
+    overflow: hidden;
+
+    margin-bottom: 22px;
+
+    border-radius: 999px;
+
+    background: #c8dce9;
+}
+
+
+.student-game-progress-bar {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: var(--color-orange);
+
+    transition: width 0.25s ease;
+}
+
+
+/* =========================
+   題目
+========================= */
+
+.student-game-question-card {
+    min-height: 155px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 32px 38px;
+
+    border: 4px solid var(--color-dark);
+    border-radius: 22px;
+
+    background: white;
+
+    box-shadow:
+        8px 8px 0 var(--color-yellow);
+
+    text-align: center;
+}
+
+
+.student-game-question-card h1 {
+    margin: 0;
+
+    color: var(--color-dark);
+
+    font-size: clamp(
+        26px,
+        2.6vw,
+        36px
+    );
+
+    font-weight: 900;
+    line-height: 1.45;
+}
+
+
+/* =========================
+   選項
+========================= */
+
+.student-game-options {
+    display: grid;
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 16px;
+
+    margin-top: 26px;
+}
+
+
+.student-game-option {
+    min-height: 100px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 19px;
+
+    border: 3px solid var(--color-dark);
+    border-radius: 17px;
+
+    background: white;
+    color: var(--color-dark);
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.16s ease,
+        box-shadow 0.16s ease,
+        background 0.16s ease,
+        border-color 0.16s ease;
+}
+
+
+.student-game-option:not(:disabled):hover {
+    transform: translate(-3px, -3px);
+
+    box-shadow:
+        5px 5px 0 var(--color-yellow);
+}
+
+
+/* =========================
+   A B C D
+========================= */
+
+.student-game-option-letter {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: var(--color-blue-light);
+    color: var(--color-navy);
+
+    font-size: 18px;
+    font-weight: 900;
+}
+
+
+.student-game-option-text {
+    flex: 1;
+
+    color: inherit;
+
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.45;
+}
+
+
+/* disabled 不直接變灰 */
+
+.student-game-option:disabled {
+    cursor: default;
+
+    opacity: 1;
+}
+
+
+/* =========================
+   已選答案
+========================= */
+
+.student-game-option.selected {
+    border-color: var(--color-navy);
+
+    background: #eaf4fa;
+
+    box-shadow:
+        5px 5px 0 var(--color-navy);
+}
+
+
+.student-game-option.selected
+.student-game-option-letter {
+    background: var(--color-navy);
+    color: white;
+}
+
+
+/* =========================
+   正確
+========================= */
+
+.student-game-option.correct {
+    border-color: #3c8f80;
+
+    background: #ecf8f5;
+
+    box-shadow:
+        5px 5px 0 var(--color-green);
+}
+
+
+.student-game-option.correct
+.student-game-option-letter {
+    background: var(--color-green);
+    color: white;
+}
+
+
+/* =========================
+   錯誤
+========================= */
+
+.student-game-option.wrong {
+    border-color: var(--color-orange);
+
+    background: #fff0eb;
+
+    box-shadow:
+        5px 5px 0 var(--color-orange);
+}
+
+
+.student-game-option.wrong
+.student-game-option-letter {
+    background: var(--color-orange);
+    color: white;
+}
+
+
+/* =========================
+   對錯 icon
+========================= */
+
+.student-game-option-mark {
+    flex-shrink: 0;
+
+    font-size: 28px;
+    font-weight: 900;
+}
+
+
+.student-game-option-mark.correct {
+    color: #3c8f80;
+}
+
+
+.student-game-option-mark.wrong {
+    color: var(--color-orange);
+}
+
+
+/* =========================
+   下方狀態
+========================= */
+
+.student-game-status {
+    margin-top: 24px;
+}
+
+
+/* =========================
+   已送出
+========================= */
+
+.student-game-waiting {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 16px 18px;
+
+    border: 2px solid #bfd4e1;
+    border-radius: 13px;
+
+    background: #edf6fb;
+}
+
+
+.student-game-waiting-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--color-navy);
+    color: white;
+
+    font-size: 20px;
+    font-weight: 900;
+}
+
+
+.student-game-waiting strong {
+    color: var(--color-dark);
+
+    font-size: 16px;
+}
+
+
+.student-game-waiting p {
+    margin: 3px 0 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   公布結果
+========================= */
+
+.student-game-result {
+    padding: 18px;
+
+    border: 3px solid var(--color-dark);
+    border-radius: 15px;
+
+    background: white;
+}
+
+
+/* 正確 */
+
+.student-game-result.correct {
+    border-color: #3c8f80;
+
+    background: #ecf8f5;
+}
+
+
+/* 錯誤 */
+
+.student-game-result.wrong {
+    border-color: var(--color-orange);
+
+    background: #fff0eb;
+}
+
+
+/* 未作答 */
+
+.student-game-result.empty {
+    border-color: #b9bdc5;
+
+    background: #f6f6f7;
+}
+
+
+/* =========================
+   結果標題
+========================= */
+
+.student-game-result-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+
+.student-game-result-main strong {
+    color: var(--color-dark);
+
+    font-size: 21px;
+    font-weight: 900;
+}
+
+
+.student-game-result-icon {
+    font-size: 28px;
+    font-weight: 900;
+}
+
+
+.student-game-result.correct
+.student-game-result-icon {
+    color: #3c8f80;
+}
+
+
+.student-game-result.wrong
+.student-game-result-icon {
+    color: var(--color-orange);
+}
+
+
+.student-game-result.empty
+.student-game-result-icon {
+    color: #999ca5;
+}
+
+
+/* =========================
+   正確答案
+========================= */
+
+.student-game-correct-answer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 13px;
+}
+
+
+.student-game-correct-answer span {
+    color: var(--color-text-muted);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.student-game-correct-answer strong {
+    color: var(--color-dark);
+
+    font-size: 17px;
+    font-weight: 900;
+}
+
+
+/* 下一題 */
+
+.student-game-next-hint {
+    margin: 12px 0 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   狀態畫面
+========================= */
+
+.student-game-state-page {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background: var(--color-blue-light);
+}
+
+
+.student-game-state-card {
+    width: min(430px, 100%);
+
+    padding: 35px;
+
+    border: 4px solid var(--color-dark);
+    border-radius: 20px;
+
+    background: white;
+
+    box-shadow:
+        8px 8px 0 var(--color-green);
+
+    text-align: center;
+}
+
+
+.student-game-state-card h1 {
+    margin: 0;
+
+    font-size: 27px;
+}
+
+
+.student-game-state-card p {
+    margin: 10px 0 0;
+
+    color: var(--color-text-light);
+
+    font-size: 14px;
+}
+
+
+.student-game-loading {
+    color: var(--color-dark);
+
+    font-size: 22px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   手機
+========================= */
+
+@media (max-width: 560px) {
+
+    .student-game-header {
+        height: 64px;
+
+        padding: 0 20px;
+    }
+
+
+    .student-game-logo {
+        font-size: 19px;
+    }
+
+
+    .student-game-logo-icon {
+        width: 36px;
+        height: 36px;
+
+        font-size: 18px;
+    }
+
+
+    .student-game-player {
+        max-width: 45%;
+
+        font-size: 12px;
+    }
+
+
+    .student-game-main {
+        width: calc(100% - 32px);
+
+        padding: 22px 0 35px;
+    }
+
+
+    .student-game-question-card {
+        min-height: 130px;
+
+        padding: 25px 20px;
+
+        border-width: 3px;
+
+        box-shadow:
+            6px 6px 0 var(--color-yellow);
+    }
+
+
+    .student-game-question-card h1 {
+        font-size: 23px;
+    }
+
+
+    .student-game-options {
+        grid-template-columns: 1fr;
+    }
+
+
+    .student-game-option {
+        min-height: 78px;
+
+        padding: 15px;
+
+        border-width: 2px;
+    }
+
+
+    .student-game-option-letter {
+        width: 38px;
+        height: 38px;
+
+        font-size: 16px;
+    }
+
+
+    .student-game-option-text {
+        font-size: 16px;
+    }
+
+
+    .student-game-result-main strong {
+        font-size: 19px;
+    }
+}

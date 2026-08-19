@@ -1,0 +1,319 @@
+/* src/styles/TeacherLogin.css */
+
+
+/* =========================
+   整體
+========================= */
+
+.teacher-login-page {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--color-cream);
+    color: var(--color-dark);
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.teacher-login-header {
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 8%;
+
+    background: var(--color-navy);
+}
+
+
+/* Logo */
+
+.teacher-login-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.teacher-login-logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: var(--color-yellow);
+    color: var(--color-navy);
+
+    font-size: 21px;
+    font-weight: 900;
+}
+
+
+/* 返回教師入口 */
+
+.teacher-login-back {
+    padding: 8px 14px;
+
+    border-radius: 9px;
+
+    background: #e7f1f5;
+    color: var(--color-navy);
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease;
+}
+
+.teacher-login-back:hover {
+    background: var(--color-blue-light);
+
+    transform: translateX(-2px);
+}
+
+
+/* =========================
+   Main
+========================= */
+
+.teacher-login-main {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 25px;
+}
+
+
+/* =========================
+   外層
+========================= */
+
+.teacher-login-wrapper {
+    width: min(430px, 100%);
+}
+
+
+/* =========================
+   綠色底層
+========================= */
+
+.teacher-login-shadow {
+    width: 100%;
+
+    border-radius: 24px;
+
+    background: var(--color-green);
+}
+
+
+/* =========================
+   主卡片
+========================= */
+
+.teacher-login-card {
+    padding: 34px;
+
+    border: 4px solid var(--color-dark);
+    border-radius: 24px;
+
+    background: white;
+
+    transform: translate(-9px, -9px);
+}
+
+
+/* =========================
+   標題
+========================= */
+
+.teacher-login-title {
+    margin-bottom: 28px;
+}
+
+.teacher-login-title h1 {
+    margin: 0;
+
+    color: var(--color-dark);
+
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.teacher-login-title p {
+    margin: 7px 0 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   欄位
+========================= */
+
+.teacher-login-field {
+    margin-bottom: 22px;
+}
+
+.teacher-login-field label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--color-dark);
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.teacher-login-hint {
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--color-text-muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   教室代碼
+========================= */
+
+.teacher-login-code {
+    text-transform: uppercase;
+
+    font-size: 21px;
+    font-weight: 900;
+
+    letter-spacing: 5px;
+}
+
+
+/* =========================
+   錯誤訊息
+========================= */
+
+.teacher-login-error {
+    margin-bottom: 20px;
+
+    padding: 11px 13px;
+
+    border: 2px solid var(--color-orange);
+    border-radius: 9px;
+
+    background: #fff0eb;
+    color: var(--color-orange-hover);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   進入教室
+========================= */
+
+.teacher-login-submit {
+    width: 100%;
+
+    margin-top: 2px;
+
+    font-size: 16px;
+}
+
+.teacher-login-submit:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.6;
+
+    transform: none;
+}
+
+
+/* =========================
+   手機
+========================= */
+
+@media (max-width: 560px) {
+
+    .teacher-login-header {
+        height: 64px;
+
+        padding: 0 20px;
+    }
+
+    .teacher-login-logo {
+        font-size: 19px;
+    }
+
+    .teacher-login-logo-icon {
+        width: 36px;
+        height: 36px;
+
+        font-size: 18px;
+    }
+
+    .teacher-login-back {
+        padding: 8px 12px;
+
+        font-size: 12px;
+    }
+
+    .teacher-login-main {
+        padding: 35px 25px;
+    }
+
+    .teacher-login-wrapper {
+        max-width: 360px;
+    }
+
+    .teacher-login-card {
+        padding: 28px 24px;
+
+        border-width: 3px;
+
+        transform: translate(-7px, -7px);
+    }
+
+    .teacher-login-title {
+        margin-bottom: 24px;
+    }
+
+    .teacher-login-title h1 {
+        font-size: 27px;
+    }
+
+    .teacher-login-code {
+        font-size: 19px;
+
+        letter-spacing: 4px;
+    }
+}

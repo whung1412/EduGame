@@ -1,0 +1,411 @@
+/* src/styles/global.css */
+
+
+/* =========================
+   全站色彩變數
+========================= */
+
+:root {
+    /* 主要色 */
+    --color-navy: #004358;
+    --color-dark: #343463;
+
+    /* 強調色 */
+    --color-yellow: #f5b83b;
+    --color-yellow-hover: #eba927;
+
+    --color-orange: #ef704e;
+    --color-orange-hover: #e65f3c;
+
+    --color-green: #66bfae;
+
+    /* 背景色 */
+    --color-cream: #fff4d6;
+    --color-blue-light: #dceaf6;
+    --color-page: #f6f2e9;
+
+    /* 中性色 */
+    --color-white: #ffffff;
+    --color-text: #343463;
+    --color-text-light: #71738c;
+    --color-text-muted: #8b8da1;
+
+    --color-border: #343463;
+}
+
+
+/* =========================
+   基本設定
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+
+    font-family:
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        Arial,
+        sans-serif;
+
+    background: var(--color-page);
+    color: var(--color-text);
+}
+
+
+/* =========================
+   基本元件
+========================= */
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+}
+
+
+/* =========================
+   主要按鈕
+========================= */
+
+.primary-button {
+    border: 3px solid var(--color-dark);
+    border-radius: 12px;
+
+    padding: 13px 24px;
+
+    background: var(--color-orange);
+    color: white;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    box-shadow:
+        4px 4px 0 var(--color-dark);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+.primary-button:hover {
+    background: var(--color-orange-hover);
+
+    transform: translate(-2px, -2px);
+
+    box-shadow:
+        6px 6px 0 var(--color-dark);
+}
+
+.primary-button:active {
+    transform: translate(2px, 2px);
+
+    box-shadow:
+        2px 2px 0 var(--color-dark);
+}
+
+
+/* =========================
+   次要按鈕
+========================= */
+
+.secondary-button {
+    border: 3px solid var(--color-dark);
+    border-radius: 12px;
+
+    padding: 12px 22px;
+
+    background: var(--color-yellow);
+    color: var(--color-dark);
+
+    font-weight: 800;
+
+    box-shadow:
+        3px 3px 0 var(--color-dark);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+.secondary-button:hover {
+    background: var(--color-yellow-hover);
+
+    transform: translate(-2px, -2px);
+
+    box-shadow:
+        5px 5px 0 var(--color-dark);
+}
+
+.secondary-button:active {
+    transform: translate(1px, 1px);
+
+    box-shadow:
+        2px 2px 0 var(--color-dark);
+}
+
+
+/* =========================
+   較低調的按鈕
+========================= */
+
+.outline-button {
+    border: 3px solid var(--color-dark);
+    border-radius: 12px;
+
+    padding: 12px 22px;
+
+    background: white;
+    color: var(--color-dark);
+
+    font-weight: 800;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+.outline-button:hover {
+    background: var(--color-blue-light);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   Input
+========================= */
+
+.app-input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 3px solid var(--color-dark);
+    border-radius: 12px;
+
+    background: white;
+    color: var(--color-dark);
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.15s ease;
+}
+
+.app-input::placeholder {
+    color: #aaaabb;
+}
+
+.app-input:focus {
+    border-color: var(--color-orange);
+
+    box-shadow:
+        4px 4px 0 rgba(52, 52, 99, 0.18);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   Select
+========================= */
+
+.app-select {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 3px solid var(--color-dark);
+    border-radius: 12px;
+
+    background: white;
+    color: var(--color-dark);
+
+    font-size: 16px;
+    font-weight: 600;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+.app-select:focus {
+    border-color: var(--color-green);
+}
+
+
+/* =========================
+   共用卡片
+========================= */
+
+.app-card {
+    background: white;
+
+    border: 3px solid var(--color-dark);
+    border-radius: 20px;
+
+    box-shadow:
+        6px 6px 0 var(--color-yellow);
+
+    color: var(--color-dark);
+}
+
+
+/* =========================
+   淡色卡片
+========================= */
+
+.app-card-blue {
+    background: var(--color-blue-light);
+
+    border: 3px solid var(--color-dark);
+    border-radius: 20px;
+
+    box-shadow:
+        6px 6px 0 var(--color-dark);
+}
+
+.app-card-cream {
+    background: var(--color-cream);
+
+    border: 3px solid var(--color-dark);
+    border-radius: 20px;
+
+    box-shadow:
+        6px 6px 0 var(--color-orange);
+}
+
+
+/* =========================
+   標題
+========================= */
+
+.page-title {
+    margin: 0;
+
+    color: var(--color-dark);
+
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 900;
+
+    letter-spacing: -1px;
+}
+
+.page-title-accent {
+    color: var(--color-orange);
+}
+
+
+/* =========================
+   一般文字
+========================= */
+
+.page-description {
+    color: var(--color-text-light);
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.text-muted {
+    color: var(--color-text-muted);
+}
+
+
+/* =========================
+   小標籤
+========================= */
+
+.app-tag {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 10px;
+
+    border-radius: 8px;
+
+    background: var(--color-green);
+    color: white;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   頁面 Header
+========================= */
+
+.app-header {
+    min-height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 8%;
+
+    background: var(--color-navy);
+    color: white;
+}
+
+
+/* =========================
+   手機
+========================= */
+
+@media (max-width: 560px) {
+
+    .primary-button,
+    .secondary-button,
+    .outline-button {
+        padding: 11px 18px;
+
+        font-size: 14px;
+    }
+
+    .app-input,
+    .app-select {
+        padding: 12px 14px;
+
+        font-size: 15px;
+    }
+
+    .page-title {
+        font-size: 34px;
+    }
+
+    .app-header {
+        min-height: 64px;
+
+        padding: 0 20px;
+    }
+}

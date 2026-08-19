@@ -1,0 +1,802 @@
+/* src/styles/TeacherCreate.css */
+
+
+/* =========================
+   整體
+========================= */
+
+.create-page {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--color-cream);
+    color: var(--color-dark);
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.create-header {
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 8%;
+
+    background: var(--color-navy);
+}
+
+
+/* Logo */
+
+.create-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.create-logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: var(--color-yellow);
+    color: var(--color-navy);
+
+    font-size: 21px;
+    font-weight: 900;
+}
+
+
+/* 返回教師入口 */
+
+.create-back {
+    padding: 8px 14px;
+
+    border-radius: 9px;
+
+    background: #e7f1f5;
+    color: var(--color-navy);
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease;
+}
+
+.create-back:hover {
+    background: var(--color-blue-light);
+
+    transform: translateX(-2px);
+}
+
+
+/* =========================
+   Main
+========================= */
+
+.create-main {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 28px 25px 45px;
+}
+
+
+/* =========================
+   外層
+========================= */
+
+.create-wrapper {
+    width: min(900px, 100%);
+}
+
+
+/* =========================
+   標題
+========================= */
+
+.create-title {
+    margin-bottom: 20px;
+
+    text-align: center;
+}
+
+.create-title h1 {
+    margin: 0;
+
+    color: var(--color-dark);
+
+    font-size: 34px;
+    font-weight: 900;
+}
+
+.create-title p {
+    margin: 6px 0 0;
+
+    color: var(--color-text-light);
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   卡片
+========================= */
+
+.create-card-shadow {
+    width: 100%;
+
+    border-radius: 24px;
+
+    background: var(--color-yellow);
+}
+
+.create-card {
+    padding: 30px 34px;
+
+    border: 4px solid var(--color-dark);
+    border-radius: 24px;
+
+    background: white;
+
+    transform: translate(-9px, -9px);
+}
+
+
+/* =========================
+   左右兩欄
+========================= */
+
+.create-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 38px;
+}
+
+
+/* 右側分隔 */
+
+.create-mode-section {
+    padding-left: 38px;
+
+    border-left: 2px solid #ececf1;
+}
+
+
+/* =========================
+   區域標題
+========================= */
+
+.create-section-title {
+    margin: 0 0 20px;
+
+    color: var(--color-dark);
+
+    font-size: 19px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   表單
+========================= */
+
+.create-field {
+    margin-bottom: 19px;
+}
+
+.create-field > label:first-child {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--color-dark);
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.create-field-hint {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--color-text-muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   Excel 標題
+========================= */
+
+.create-label-row {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 7px;
+}
+
+.create-label-row > label {
+    color: var(--color-dark);
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   Excel 問號
+========================= */
+
+.excel-help-button {
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 7px;
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--color-blue-light);
+    color: var(--color-navy);
+
+    font-size: 12px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+.excel-help-button:hover,
+.excel-help-button.active {
+    background: #c9dfef;
+
+    transform: scale(1.08);
+}
+
+
+/* =========================
+   Excel 上傳
+========================= */
+
+.create-file {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 13px 14px;
+
+    border: 2px dashed #b7bec9;
+    border-radius: 11px;
+
+    background: #f8fafb;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.18s ease,
+        background 0.18s ease,
+        transform 0.18s ease;
+}
+
+.create-file:hover {
+    border-color: var(--color-green);
+
+    background: #f1faf8;
+
+    transform: translateY(-1px);
+}
+
+
+/* 隱藏原生檔案按鈕 */
+
+.create-file input {
+    display: none;
+}
+
+
+/* Icon */
+
+.create-file-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: var(--color-blue-light);
+    color: var(--color-navy);
+
+    font-size: 20px;
+    font-weight: 900;
+}
+
+
+/* 檔案文字 */
+
+.create-file-text {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.create-file-text strong {
+    overflow: hidden;
+
+    color: var(--color-dark);
+
+    font-size: 12px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.create-file-text span {
+    color: var(--color-text-muted);
+
+    font-size: 10px;
+}
+
+
+/* 成功 */
+
+.create-file-success {
+    margin-top: 7px;
+
+    color: #3c8f80;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   Excel 格式說明
+========================= */
+
+.excel-help {
+    margin-top: 10px;
+
+    padding: 12px;
+
+    border: 2px solid #c9dfea;
+    border-radius: 10px;
+
+    background: var(--color-blue-light);
+}
+
+
+/* 標題列 */
+
+.excel-help-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 6px;
+}
+
+.excel-help-header strong {
+    color: var(--color-navy);
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.excel-help-header button {
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 6px;
+
+    background: transparent;
+    color: var(--color-text-muted);
+
+    font-size: 17px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.excel-help-header button:hover {
+    background: rgba(255, 255, 255, 0.7);
+
+    color: var(--color-dark);
+}
+
+
+/* 說明 */
+
+.excel-help p {
+    margin: 0 0 9px;
+
+    color: var(--color-text-light);
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   Excel 格式表格
+========================= */
+
+.excel-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.excel-format-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: white;
+
+    font-size: 9px;
+}
+
+.excel-format-table th,
+.excel-format-table td {
+    padding: 6px 5px;
+
+    border: 1px solid #ccd8df;
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+.excel-format-table th {
+    background: #f6fafc;
+    color: var(--color-navy);
+
+    font-weight: 900;
+}
+
+.excel-format-table td {
+    color: var(--color-text-light);
+}
+
+
+/* Excel 提示 */
+
+.excel-help-note {
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--color-navy);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   遊戲模式
+========================= */
+
+.game-mode-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+
+/* 卡片 */
+
+.game-mode-card {
+    width: 100%;
+    min-height: 64px;
+
+    padding: 13px 15px;
+
+    border: 2px solid #d8dce2;
+    border-radius: 11px;
+
+    background: white;
+    color: var(--color-dark);
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.18s ease,
+        background 0.18s ease,
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+/* Hover */
+
+.game-mode-card:not(.disabled):hover {
+    border-color: var(--color-orange);
+
+    background: #fff8f4;
+
+    transform: translateY(-2px);
+}
+
+
+/* 已選 */
+
+.game-mode-card.active {
+    border-color: var(--color-orange);
+
+    background: #fff0eb;
+
+    box-shadow:
+        3px 3px 0 var(--color-orange);
+}
+
+
+/* =========================
+   模式上方
+========================= */
+
+.game-mode-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.game-mode-name {
+    color: var(--color-dark);
+
+    font-size: 14px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   模式狀態
+========================= */
+
+.game-mode-status {
+    flex-shrink: 0;
+
+    padding: 3px 7px;
+
+    border-radius: 6px;
+
+    background: #eceef1;
+    color: #8b8f99;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.game-mode-status.available {
+    background: #dff3ee;
+    color: #3c8f80;
+}
+
+
+/* =========================
+   模式介紹
+========================= */
+
+.game-mode-description {
+    max-height: 0;
+
+    overflow: hidden;
+
+    margin: 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 10px;
+    line-height: 1.5;
+
+    opacity: 0;
+
+    transition:
+        max-height 0.18s ease,
+        margin 0.18s ease,
+        opacity 0.18s ease;
+}
+
+
+/* Hover 顯示 */
+
+.game-mode-card:hover .game-mode-description,
+.game-mode-card.active .game-mode-description {
+    max-height: 45px;
+
+    margin-top: 6px;
+
+    opacity: 1;
+}
+
+
+/* =========================
+   待開發
+========================= */
+
+.game-mode-card.disabled {
+    border-color: #e2e4e8;
+
+    background: #f6f6f7;
+    color: #9699a2;
+
+    cursor: not-allowed;
+
+    opacity: 0.82;
+}
+
+.game-mode-card.disabled .game-mode-name {
+    color: #8f929b;
+}
+
+.game-mode-card.disabled:hover {
+    border-color: #c9cdd3;
+
+    background: #f1f2f4;
+}
+
+
+/* =========================
+   建立按鈕
+========================= */
+
+.create-submit {
+    width: 100%;
+
+    margin-top: 24px;
+}
+
+.create-submit:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.6;
+
+    transform: none;
+}
+
+
+/* =========================
+   平板 / 小螢幕
+========================= */
+
+@media (max-width: 760px) {
+
+    .create-wrapper {
+        width: min(520px, 100%);
+    }
+
+    .create-columns {
+        grid-template-columns: 1fr;
+
+        gap: 26px;
+    }
+
+    .create-mode-section {
+        padding-left: 0;
+
+        border-left: none;
+    }
+}
+
+
+/* =========================
+   手機
+========================= */
+
+@media (max-width: 560px) {
+
+    .create-header {
+        height: 64px;
+
+        padding: 0 20px;
+    }
+
+    .create-logo {
+        font-size: 19px;
+    }
+
+    .create-logo-icon {
+        width: 36px;
+        height: 36px;
+
+        font-size: 18px;
+    }
+
+    .create-back {
+        padding: 8px 12px;
+
+        font-size: 12px;
+    }
+
+    .create-main {
+        padding: 25px 24px 40px;
+    }
+
+    .create-title {
+        margin-bottom: 18px;
+    }
+
+    .create-title h1 {
+        font-size: 30px;
+    }
+
+    .create-card {
+        padding: 25px 22px;
+
+        border-width: 3px;
+
+        transform: translate(-7px, -7px);
+    }
+
+    .create-columns {
+        gap: 24px;
+    }
+
+    .create-section-title {
+        margin-bottom: 15px;
+    }
+
+    .create-submit {
+        margin-top: 20px;
+    }
+}
