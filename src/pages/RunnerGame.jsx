@@ -37,6 +37,7 @@ import "../styles/RunnerGame.css";
 
 import {
     doc,
+    getDoc,
     updateDoc
 } from "firebase/firestore";
 
@@ -1111,25 +1112,129 @@ function RunnerGame() {
        查看結果
     ========================= */
 
-    const goToResult = () => {
+    const goToResult = async () => {
 
-        navigate(
-            "/student/result",
-            {
-                state: {
+        try {
 
-                    roomCode,
+            const playerRef = doc(
+                db,
+                "rooms",
+                roomCode,
+                "players",
+                playerId
+            );
 
-                    playerId,
 
-                    playerName,
+            const playerSnap =
+                await getDoc(playerRef);
 
-                    runnerScore:
-                        score
 
-                }
+            let runnerCorrectCount = 0;
+            let runnerWrongCount = 0;
+            let runnerReviveCount =
+                reviveCountRef.current;
+
+            let finalRunnerScore =
+                score;
+
+
+            if (playerSnap.exists()) {
+
+                const playerData =
+                    playerSnap.data();
+
+
+                runnerCorrectCount =
+                    playerData.runnerCorrectCount ??
+                    0;
+
+                runnerWrongCount =
+                    playerData.runnerWrongCount ??
+                    0;
+
+                runnerReviveCount =
+                    playerData.runnerReviveCount ??
+                    reviveCountRef.current;
+
+                finalRunnerScore =
+                    playerData.runnerScore ??
+                    score;
+
             }
-        );
+
+
+            navigate(
+                "/student/result",
+                {
+                    state: {
+
+                        roomCode,
+
+                        playerId,
+
+                        playerName,
+
+                        gameMode:
+                            "runner",
+
+                        runnerScore:
+                            finalRunnerScore,
+
+                        runnerCorrectCount,
+
+                        runnerWrongCount,
+
+                        runnerReviveCount
+
+                    }
+                }
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "讀取 Runner 結果失敗：",
+                error
+            );
+
+
+            /*
+            * Firebase 讀取失敗時，
+            * 至少仍然讓學生進結果頁。
+            */
+
+            navigate(
+                "/student/result",
+                {
+                    state: {
+
+                        roomCode,
+
+                        playerId,
+
+                        playerName,
+
+                        gameMode:
+                            "runner",
+
+                        runnerScore:
+                            score,
+
+                        runnerCorrectCount:
+                            0,
+
+                        runnerWrongCount:
+                            0,
+
+                        runnerReviveCount:
+                            reviveCountRef.current
+
+                    }
+                }
+            );
+
+        }
 
     };
 

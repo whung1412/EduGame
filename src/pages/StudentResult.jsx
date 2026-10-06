@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+
+import {
+    useLocation,
+    useNavigate
+} from "react-router-dom";
+
 import {
     collection,
     getDocs
@@ -11,16 +16,49 @@ import "../styles/StudentResult.css";
 
 
 function StudentResult() {
+
     const location = useLocation();
     const navigate = useNavigate();
 
-    const roomCode = location.state?.roomCode;
-    const playerId = location.state?.playerId;
-    const playerName = location.state?.playerName;
 
-    const [result, setResult] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [errorMessage, setErrorMessage] = useState("");
+    /* =========================
+       路由資料
+    ========================= */
+
+    const roomCode =
+        location.state?.roomCode;
+
+    const playerId =
+        location.state?.playerId;
+
+    const playerName =
+        location.state?.playerName;
+
+    const gameMode =
+        location.state?.gameMode ??
+        "quiz";
+
+
+    /* =========================
+       State
+    ========================= */
+
+    const [
+        result,
+        setResult
+    ] = useState(null);
+
+
+    const [
+        loading,
+        setLoading
+    ] = useState(true);
+
+
+    const [
+        errorMessage,
+        setErrorMessage
+    ] = useState("");
 
 
     /* =========================
@@ -28,54 +66,119 @@ function StudentResult() {
     ========================= */
 
     useEffect(() => {
-        if (!roomCode || !playerId) {
+
+        if (
+            !roomCode ||
+            !playerId
+        ) {
+
             setLoading(false);
+
             return;
         }
 
+
         async function loadResult() {
+
             try {
-                const playersRef = collection(
-                    db,
-                    "rooms",
-                    roomCode,
-                    "players"
-                );
+
+                const playersRef =
+                    collection(
+                        db,
+                        "rooms",
+                        roomCode,
+                        "players"
+                    );
+
 
                 const snapshot =
-                    await getDocs(playersRef);
+                    await getDocs(
+                        playersRef
+                    );
 
 
                 const players =
                     snapshot.docs.map(
                         (playerDoc) => ({
-                            id: playerDoc.id,
+
+                            id:
+                                playerDoc.id,
+
                             ...playerDoc.data()
+
                         })
                     );
 
 
-                /* 分數由高到低 */
+                /* =====================
+                   排名
+                ===================== */
 
-                players.sort((a, b) => {
-                    const scoreA =
-                        a.score ?? 0;
+                players.sort(
+                    (a, b) => {
 
-                    const scoreB =
-                        b.score ?? 0;
+                        /*
+                         * Runner
+                         */
 
-                    return scoreB - scoreA;
-                });
+                        if (
+                            gameMode ===
+                            "runner"
+                        ) {
 
+                            const scoreA =
+                                a.runnerScore ??
+                                0;
+
+                            const scoreB =
+                                b.runnerScore ??
+                                0;
+
+                            return (
+                                scoreB -
+                                scoreA
+                            );
+
+                        }
+
+
+                        /*
+                         * Quiz
+                         */
+
+                        const scoreA =
+                            a.score ??
+                            0;
+
+                        const scoreB =
+                            b.score ??
+                            0;
+
+                        return (
+                            scoreB -
+                            scoreA
+                        );
+
+                    }
+                );
+
+
+                /* =====================
+                   找到目前玩家
+                ===================== */
 
                 const playerIndex =
                     players.findIndex(
                         (player) =>
-                            player.id === playerId
+                            player.id ===
+                            playerId
                     );
 
 
-                if (playerIndex === -1) {
+                if (
+                    playerIndex === -1
+                ) {
+
                     setErrorMessage(
                         "找不到你的成績"
                     );
@@ -85,11 +188,91 @@ function StudentResult() {
 
 
                 const player =
-                    players[playerIndex];
+                    players[
+                        playerIndex
+                    ];
 
+
+                /* =====================
+                   Runner 結果
+                ===================== */
+
+                if (
+                    gameMode ===
+                    "runner"
+                ) {
+
+                    const correctCount =
+                        player.runnerCorrectCount ??
+                        0;
+
+                    const wrongCount =
+                        player.runnerWrongCount ??
+                        0;
+
+                    const totalAnswers =
+                        correctCount +
+                        wrongCount;
+
+
+                    const accuracy =
+                        totalAnswers > 0
+                            ? Math.round(
+                                correctCount /
+                                totalAnswers *
+                                100
+                            )
+                            : 0;
+
+
+                    setResult({
+
+                        rank:
+                            playerIndex + 1,
+
+                        totalPlayers:
+                            players.length,
+
+                        name:
+                            player.name ??
+                            playerName,
+
+                        score:
+                            player.runnerScore ??
+                            location.state
+                                ?.runnerScore ??
+                            0,
+
+                        correctCount,
+
+                        wrongCount,
+
+                        accuracy,
+
+                        reviveCount:
+                            player.runnerReviveCount ??
+                            0,
+
+                        gameMode:
+                            "runner"
+
+                    });
+
+
+                    return;
+
+                }
+
+
+                /* =====================
+                   Quiz 結果
+                ===================== */
 
                 setResult({
-                    rank: playerIndex + 1,
+
+                    rank:
+                        playerIndex + 1,
+
                     totalPlayers:
                         players.length,
 
@@ -98,25 +281,38 @@ function StudentResult() {
                         playerName,
 
                     score:
-                        player.score ?? 0,
+                        player.score ??
+                        0,
 
                     correctCount:
-                        player.correctCount ?? 0
+                        player.correctCount ??
+                        0,
+
+                    gameMode:
+                        "quiz"
+
                 });
 
+
             } catch (error) {
+
                 console.error(
                     "讀取成績失敗：",
                     error
                 );
 
+
                 setErrorMessage(
                     "無法讀取成績"
                 );
 
+
             } finally {
+
                 setLoading(false);
+
             }
+
         }
 
 
@@ -125,7 +321,9 @@ function StudentResult() {
     }, [
         roomCode,
         playerId,
-        playerName
+        playerName,
+        gameMode,
+        location.state
     ]);
 
 
@@ -133,8 +331,13 @@ function StudentResult() {
        缺少資料
     ========================= */
 
-    if (!roomCode || !playerId) {
+    if (
+        !roomCode ||
+        !playerId
+    ) {
+
         return (
+
             <div className="student-result-state-page">
 
                 <div className="student-result-state-card">
@@ -160,7 +363,9 @@ function StudentResult() {
                 </div>
 
             </div>
+
         );
+
     }
 
 
@@ -169,15 +374,21 @@ function StudentResult() {
     ========================= */
 
     if (loading) {
+
         return (
+
             <div className="student-result-state-page">
 
                 <div className="student-result-loading">
+
                     載入成績中...
+
                 </div>
 
             </div>
+
         );
+
     }
 
 
@@ -185,8 +396,13 @@ function StudentResult() {
        錯誤
     ========================= */
 
-    if (errorMessage) {
+    if (
+        errorMessage ||
+        !result
+    ) {
+
         return (
+
             <div className="student-result-state-page">
 
                 <div className="student-result-state-card">
@@ -196,7 +412,8 @@ function StudentResult() {
                     </h1>
 
                     <p>
-                        {errorMessage}
+                        {errorMessage ||
+                            "找不到遊戲結果"}
                     </p>
 
                     <button
@@ -212,11 +429,18 @@ function StudentResult() {
                 </div>
 
             </div>
+
         );
+
     }
 
 
+    /* =========================
+       Render
+    ========================= */
+
     return (
+
         <div className="student-result-page">
 
 
@@ -278,7 +502,9 @@ function StudentResult() {
                     >
 
                         <span className="student-result-rank-label">
+
                             你的排名
+
                         </span>
 
 
@@ -300,14 +526,16 @@ function StudentResult() {
 
 
                         <p>
+
                             共 {result.totalPlayers} 位玩家
+
                         </p>
 
                     </section>
 
 
                     {/* =========================
-                        成績
+                        基本成績
                     ========================= */}
 
                     <section className="student-result-stats">
@@ -315,7 +543,12 @@ function StudentResult() {
                         <div className="student-result-stat">
 
                             <span>
-                                分數
+
+                                {result.gameMode ===
+                                "runner"
+                                    ? "跑酷分數"
+                                    : "分數"}
+
                             </span>
 
                             <strong>
@@ -344,12 +577,80 @@ function StudentResult() {
                     </section>
 
 
-                    {/* 第一名 */}
+                    {/* =========================
+                        Runner 額外成績
+                    ========================= */}
+
+                    {result.gameMode ===
+                        "runner" && (
+
+                        <section className="student-result-stats">
+
+                            <div className="student-result-stat">
+
+                                <span>
+                                    答錯題數
+                                </span>
+
+                                <strong>
+                                    {result.wrongCount}
+                                </strong>
+
+                                <small>
+                                    題
+                                </small>
+
+                            </div>
+
+
+                            <div className="student-result-stat">
+
+                                <span>
+                                    正確率
+                                </span>
+
+                                <strong>
+                                    {result.accuracy}
+                                </strong>
+
+                                <small>
+                                    %
+                                </small>
+
+                            </div>
+
+
+                            <div className="student-result-stat">
+
+                                <span>
+                                    復活次數
+                                </span>
+
+                                <strong>
+                                    {result.reviveCount}
+                                </strong>
+
+                                <small>
+                                    次
+                                </small>
+
+                            </div>
+
+                        </section>
+
+                    )}
+
+
+                    {/* =========================
+                        第一名
+                    ========================= */}
 
                     {result.rank === 1 && (
 
                         <div className="student-result-first-message">
+
                             第一名！
+
                         </div>
 
                     )}
@@ -366,7 +667,9 @@ function StudentResult() {
                             navigate("/")
                         }
                     >
+
                         返回首頁
+
                     </button>
 
                 </div>
@@ -374,7 +677,9 @@ function StudentResult() {
             </main>
 
         </div>
+
     );
+
 }
 
 
