@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import Game from "./pages/Game";
 import TeacherResult from "./pages/TeacherResult";
 import StudentResult from "./pages/StudentResult";
+import TeacherRunnerResult from "./pages/TeacherRunnerResult";
 
 function App() {
     return (
@@ -48,6 +49,10 @@ function App() {
                 />
 
                 <Route path="*" element={<NotFound />} />
+                <Route
+                    path="/teacher/runner-result"
+                    element={<TeacherRunnerResult />}
+                />
             </Routes>
         </BrowserRouter>
     );

@@ -448,11 +448,16 @@ function TeacherCreate() {
 
 
                                         {/* 跑酷 */}
-
                                         <button
                                             type="button"
-                                            className="game-mode-card disabled"
-                                            disabled
+                                            className={`game-mode-card ${
+                                                gameMode === "runner"
+                                                    ? "active"
+                                                    : ""
+                                            }`}
+                                            onClick={() =>
+                                                setGameMode("runner")
+                                            }
                                         >
 
                                             <div className="game-mode-top">
@@ -461,16 +466,15 @@ function TeacherCreate() {
                                                     跑酷
                                                 </span>
 
-                                                <span className="game-mode-status">
-                                                    待開發
+                                                <span className="game-mode-status available">
+                                                    可使用
                                                 </span>
 
                                             </div>
 
-
                                             <p className="game-mode-description">
-                                                操作角色前進，
-                                                透過答題突破關卡與障礙。
+                                                操作角色跳躍與下蹲躲避障礙，
+                                                透過答題獲得復活與特殊效果。
                                             </p>
 
                                         </button>

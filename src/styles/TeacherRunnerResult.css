@@ -1,0 +1,557 @@
+/* =========================
+   整體
+========================= */
+
+.runner-result-page {
+    width: 100%;
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    padding: 42px 8% 60px;
+
+    background: #f6f2e9;
+    color: #343463;
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.runner-result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 35px;
+}
+
+
+.runner-result-header h1 {
+    margin: 0 0 8px;
+
+    font-size: 36px;
+    font-weight: 800;
+
+    color: #343463;
+}
+
+
+.runner-result-header p {
+    margin: 0;
+
+    font-size: 17px;
+
+    color: #6d6d80;
+}
+
+
+.runner-result-header p span {
+    margin: 0 7px;
+}
+
+
+.runner-result-header strong {
+    margin-left: 5px;
+
+    color: #004358;
+
+    font-size: 19px;
+    letter-spacing: 1px;
+}
+
+
+/* 返回首頁 */
+
+.runner-result-home {
+    padding: 11px 20px;
+
+    border: 2px solid #004358;
+    border-radius: 10px;
+
+    background: transparent;
+    color: #004358;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        color 0.15s ease;
+}
+
+
+.runner-result-home:hover {
+    background: #004358;
+    color: white;
+}
+
+
+/* =========================
+   第一名
+========================= */
+
+.runner-winner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 470px;
+
+    margin: 0 auto 45px;
+    padding: 30px 35px;
+
+    border: 3px solid #343463;
+    border-radius: 18px;
+
+    /* 原本 #ffe11a 太亮 */
+    background: #fff4c7;
+
+    box-shadow: 7px 7px 0 #343463;
+
+    text-align: center;
+}
+
+
+.runner-winner-label {
+    margin-bottom: 9px;
+
+    font-size: 17px;
+    font-weight: 800;
+
+    color: #004358;
+
+    letter-spacing: 2px;
+}
+
+
+.runner-winner-name {
+    max-width: 100%;
+
+    margin-bottom: 8px;
+
+    overflow: hidden;
+
+    font-size: 31px;
+    font-weight: 900;
+
+    color: #343463;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.runner-winner-score {
+    margin-bottom: 12px;
+
+    font-size: 45px;
+    line-height: 1;
+
+    font-weight: 900;
+
+    color: #004358;
+}
+
+
+.runner-winner-score span {
+    margin-left: 5px;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.runner-winner-detail {
+    font-size: 16px;
+    font-weight: 600;
+
+    color: #555568;
+}
+
+
+.runner-winner-detail strong {
+    margin: 0 4px;
+
+    color: #343463;
+}
+
+
+.runner-winner-detail span {
+    margin: 0 10px;
+
+    color: #8a876e;
+}
+
+
+/* =========================
+   排名區
+========================= */
+
+.runner-ranking {
+    width: 100%;
+}
+
+
+.runner-ranking-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 15px;
+}
+
+
+.runner-ranking-title h2 {
+    margin: 0;
+
+    font-size: 25px;
+    font-weight: 800;
+
+    color: #343463;
+}
+
+
+.runner-ranking-title span {
+    font-size: 15px;
+
+    color: #777789;
+}
+
+
+/* =========================
+   排名表格
+========================= */
+
+.runner-ranking-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-radius: 16px;
+
+    background: white;
+}
+
+
+.runner-ranking-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+}
+
+
+/* 欄位寬度 */
+
+.runner-ranking-table th:nth-child(1) {
+    width: 10%;
+}
+
+.runner-ranking-table th:nth-child(2) {
+    width: 22%;
+}
+
+.runner-ranking-table th:nth-child(3) {
+    width: 17%;
+}
+
+.runner-ranking-table th:nth-child(4),
+.runner-ranking-table th:nth-child(5) {
+    width: 11%;
+}
+
+.runner-ranking-table th:nth-child(6) {
+    width: 16%;
+}
+
+.runner-ranking-table th:nth-child(7) {
+    width: 13%;
+}
+
+
+/* 表頭 */
+
+.runner-ranking-table thead {
+    background: #004358;
+}
+
+
+.runner-ranking-table th {
+    padding: 17px 15px;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    text-align: center;
+}
+
+
+.runner-ranking-table th:nth-child(2) {
+    text-align: left;
+}
+
+
+/* 資料 */
+
+.runner-ranking-table td {
+    padding: 18px 15px;
+
+    border-bottom: 1px solid #ece9e1;
+
+    color: #343463;
+
+    font-size: 17px;
+
+    text-align: center;
+}
+
+
+.runner-ranking-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+.runner-ranking-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+
+.runner-ranking-table tbody tr:hover {
+    background: #faf8f2;
+}
+
+
+/* =========================
+   排名
+========================= */
+
+.runner-rank {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: #ece9e1;
+    color: #555568;
+
+    font-size: 16px;
+    font-weight: 800;
+}
+
+
+/* 第一名 */
+
+.runner-rank.first {
+    background: #f3d96b;
+    color: #343463;
+
+    border: 2px solid #343463;
+}
+
+
+/* =========================
+   學生姓名
+========================= */
+
+.runner-ranking-name {
+    overflow: hidden;
+
+    font-size: 18px !important;
+    font-weight: 700;
+
+    text-align: left !important;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================
+   跑酷分數
+========================= */
+
+.runner-ranking-score {
+    font-size: 19px;
+
+    color: #004358;
+}
+
+
+/* =========================
+   答對 / 答錯
+========================= */
+
+.runner-ranking-correct {
+    color: #277a59 !important;
+
+    font-size: 18px !important;
+    font-weight: 800;
+}
+
+
+.runner-ranking-wrong {
+    color: #b44c46 !important;
+
+    font-size: 18px !important;
+    font-weight: 800;
+}
+
+
+/* =========================
+   無結果
+========================= */
+
+.runner-result-empty {
+    padding: 60px 20px;
+
+    border-radius: 16px;
+
+    background: white;
+
+    color: #777789;
+
+    font-size: 18px;
+    text-align: center;
+}
+
+
+/* =========================
+   Loading / Error
+========================= */
+
+.runner-result-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 320px;
+
+    color: #68687d;
+
+    font-size: 19px;
+    font-weight: 600;
+
+    text-align: center;
+}
+
+
+.runner-result-message h1 {
+    margin: 0 0 12px;
+
+    color: #343463;
+
+    font-size: 30px;
+}
+
+
+.runner-result-message p {
+    margin: 0 0 22px;
+}
+
+
+.runner-result-message button {
+    padding: 12px 22px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #004358;
+    color: white;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   平板
+========================= */
+
+@media (max-width: 900px) {
+
+    .runner-result-page {
+        padding:
+            32px 5%
+            50px;
+    }
+
+
+    .runner-result-header h1 {
+        font-size: 31px;
+    }
+
+
+    .runner-ranking-table {
+        min-width: 800px;
+    }
+
+}
+
+
+/* =========================
+   手機
+========================= */
+
+@media (max-width: 600px) {
+
+    .runner-result-page {
+        padding:
+            25px 20px
+            40px;
+    }
+
+
+    .runner-result-header {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+
+    .runner-result-header h1 {
+        font-size: 28px;
+    }
+
+
+    .runner-winner {
+        padding:
+            25px 20px;
+
+        margin-bottom: 35px;
+    }
+
+
+    .runner-winner-name {
+        font-size: 27px;
+    }
+
+
+    .runner-winner-score {
+        font-size: 39px;
+    }
+
+
+    .runner-ranking-title h2 {
+        font-size: 22px;
+    }
+
+}

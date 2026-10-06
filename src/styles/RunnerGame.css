@@ -1,0 +1,1302 @@
+/* =========================
+   Runner Game
+========================= */
+
+.runner-page {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #f6f2e9;
+    color: #343463;
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.runner-header {
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 8%;
+
+    background: #004358;
+    color: white;
+
+    box-sizing: border-box;
+}
+
+
+/* Logo */
+
+.runner-logo {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    font-size: 22px;
+    font-weight: 800;
+}
+
+
+.runner-logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffe11a;
+    color: #343463;
+
+    border-radius: 11px;
+
+    font-size: 22px;
+    font-weight: 900;
+}
+
+
+/* 玩家名稱 */
+
+.runner-player {
+    max-width: 220px;
+
+    padding: 9px 17px;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.13);
+
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    border-radius: 100px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================
+   Main
+========================= */
+
+.runner-main {
+    width: min(1050px, 92%);
+
+    margin: 0 auto;
+
+    padding: 30px 0 36px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   Top
+========================= */
+
+.runner-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 18px;
+}
+
+
+.runner-mode-label {
+    display: inline-block;
+
+    margin-bottom: 5px;
+
+    color: #ef6f6c;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.runner-top h1 {
+    margin: 0;
+
+    color: #343463;
+
+    font-size: 34px;
+    line-height: 1.15;
+}
+
+
+/* =========================
+   Stats
+========================= */
+
+.runner-stats {
+    display: flex;
+    gap: 12px;
+}
+
+
+.runner-stat {
+    min-width: 105px;
+
+    padding: 9px 18px;
+
+    background: white;
+
+    border: 2px solid #343463;
+    border-radius: 14px;
+
+    box-shadow: 4px 4px 0 #343463;
+
+    text-align: center;
+
+    box-sizing: border-box;
+}
+
+
+.runner-stat span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #74748d;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.runner-stat strong {
+    color: #343463;
+
+    font-size: 23px;
+    font-weight: 900;
+}
+
+
+.runner-stat small {
+    margin-left: 3px;
+
+    color: #85859a;
+
+    font-size: 13px;
+}
+
+/* =========================
+   Canvas
+========================= */
+
+.runner-canvas {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 900 / 430;
+}
+
+
+/* =========================
+   Overlay
+========================= */
+
+.runner-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(0, 43, 58, 0.44);
+
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
+    box-sizing: border-box;
+
+    z-index: 20;
+}
+
+
+/* =========================
+   Start
+========================= */
+
+.runner-start {
+    width: min(470px, 90%);
+
+    padding: 30px 32px;
+
+    background: #fffdf7;
+
+    border: 3px solid #343463;
+    border-radius: 20px;
+
+    box-shadow: 7px 7px 0 #343463;
+
+    text-align: center;
+
+    box-sizing: border-box;
+}
+
+
+.runner-start-character {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 15px;
+
+    background: #ef6f6c;
+    color: #ef6f6c;
+
+    border: 3px solid #343463;
+    border-radius: 10px;
+
+    box-shadow: 4px 4px 0 #343463;
+
+    font-size: 0;
+}
+
+
+.runner-start-character::before,
+.runner-start-character::after {
+    content: "";
+
+    position: relative;
+
+    width: 6px;
+    height: 6px;
+
+    background: #343463;
+
+    border-radius: 1px;
+}
+
+
+.runner-start-character::before {
+    margin-right: 8px;
+}
+
+
+.runner-start h2 {
+    margin: 0 0 8px;
+
+    color: #343463;
+
+    font-size: 27px;
+}
+
+
+.runner-start > p {
+    margin: 0;
+
+    color: #66667d;
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   Rules
+========================= */
+
+.runner-rules {
+    display: flex;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 22px 0;
+}
+
+
+.runner-rules > span {
+    min-width: 130px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding: 10px 15px;
+
+    background: #e7f3f6;
+
+    border: 2px solid #343463;
+    border-radius: 12px;
+
+    color: #343463;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.runner-rules strong {
+    font-size: 16px;
+}
+
+
+/* =========================
+   Primary Button
+========================= */
+
+.runner-primary-button {
+    min-width: 175px;
+
+    padding: 12px 25px;
+
+    background: #ffe11a;
+    color: #343463;
+
+    border: 3px solid #343463;
+    border-radius: 12px;
+
+    box-shadow: 4px 4px 0 #343463;
+
+    font-size: 17px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease,
+        background 0.12s ease;
+}
+
+
+.runner-primary-button:hover {
+    background: #ffeb58;
+
+    transform: translate(2px, 2px);
+
+    box-shadow: 2px 2px 0 #343463;
+}
+
+
+.runner-primary-button:active {
+    transform: translate(4px, 4px);
+
+    box-shadow: none;
+}
+
+
+/* =========================
+   Quiz
+========================= */
+
+.runner-quiz {
+    width: min(620px, 92%);
+
+    max-height: 95%;
+
+    overflow-y: auto;
+
+    padding: 24px 28px 26px;
+
+    background: #fffdf7;
+
+    border: 3px solid #343463;
+    border-radius: 20px;
+
+    box-shadow: 7px 7px 0 #343463;
+
+    box-sizing: border-box;
+
+    text-align: center;
+}
+
+
+.runner-quiz-badge {
+    display: inline-block;
+
+    margin-bottom: 10px;
+    padding: 6px 13px;
+
+    border: 2px solid #343463;
+    border-radius: 100px;
+
+    color: #343463;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+
+/* 復活題 */
+
+.runner-quiz-badge.revive {
+    background: #ff9b87;
+}
+
+
+/* 250 分抽考 */
+
+.runner-quiz-badge.milestone {
+    background: #ffe11a;
+}
+
+
+.runner-quiz h2 {
+    margin: 0 0 5px;
+
+    color: #343463;
+
+    font-size: 25px;
+}
+
+
+.runner-quiz-hint {
+    margin: 0 0 18px;
+
+    color: #77778d;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   Question
+========================= */
+
+.runner-question {
+    margin-bottom: 16px;
+    padding: 16px 20px;
+
+    background: #e7f3f6;
+
+    border-left: 6px solid #004358;
+    border-radius: 10px;
+
+    color: #343463;
+
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 1.55;
+
+    text-align: left;
+}
+
+
+/* =========================
+   Options
+========================= */
+
+.runner-options {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+
+.runner-option {
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 9px 13px;
+
+    background: white;
+    color: #343463;
+
+    border: 2px solid #343463;
+    border-radius: 11px;
+
+    box-shadow: 3px 3px 0 #343463;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s ease,
+        box-shadow 0.1s ease,
+        background 0.1s ease;
+}
+
+
+.runner-option:hover:not(:disabled) {
+    background: #fff7c5;
+
+    transform: translate(1px, 1px);
+
+    box-shadow: 2px 2px 0 #343463;
+}
+
+
+.runner-option:active:not(:disabled) {
+    transform: translate(3px, 3px);
+
+    box-shadow: none;
+}
+
+
+.runner-option:disabled {
+    cursor: default;
+}
+
+
+/* ABCD */
+
+.runner-option-letter {
+    width: 33px;
+    height: 33px;
+
+    flex: 0 0 33px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #343463;
+    color: white;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 900;
+}
+
+
+.runner-option-text {
+    flex: 1;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* 正確 */
+
+.runner-option.correct {
+    background: #d9f2df;
+
+    border-color: #287d46;
+
+    box-shadow: 3px 3px 0 #287d46;
+
+    color: #205f37;
+}
+
+
+.runner-option.correct .runner-option-letter {
+    background: #287d46;
+}
+
+
+/* 錯誤 */
+
+.runner-option.wrong {
+    background: #ffe0db;
+
+    border-color: #c94d49;
+
+    box-shadow: 3px 3px 0 #c94d49;
+
+    color: #a93c39;
+}
+
+
+.runner-option.wrong .runner-option-letter {
+    background: #c94d49;
+}
+
+
+/* =========================
+   Answer Result
+========================= */
+
+.runner-answer-result {
+    margin-top: 15px;
+    padding: 10px 14px;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+
+.runner-answer-result.correct {
+    background: #d9f2df;
+    color: #246b3c;
+}
+
+
+.runner-answer-result.wrong {
+    background: #ffe0db;
+    color: #a93c39;
+}
+
+
+/* =========================
+   Game Over
+========================= */
+
+.runner-game-over {
+    width: min(420px, 90%);
+
+    padding: 30px;
+
+    background: #fffdf7;
+
+    border: 3px solid #343463;
+    border-radius: 20px;
+
+    box-shadow: 7px 7px 0 #343463;
+
+    text-align: center;
+
+    box-sizing: border-box;
+}
+
+
+.runner-game-over-icon {
+    width: 54px;
+    height: 54px;
+
+    margin: 0 auto 12px;
+
+    background: #ef6f6c;
+
+    border: 3px solid #343463;
+    border-radius: 10px;
+
+    box-shadow: 4px 4px 0 #343463;
+
+    color: transparent;
+}
+
+
+.runner-game-over-label {
+    display: inline-block;
+
+    margin-bottom: 6px;
+
+    color: #ef6f6c;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.runner-game-over h2 {
+    margin: 0 0 15px;
+
+    color: #343463;
+
+    font-size: 28px;
+}
+
+
+.runner-game-over p {
+    margin: 0 0 2px;
+
+    color: #77778d;
+
+    font-size: 15px;
+}
+
+
+.runner-final-score {
+    display: block;
+
+    color: #343463;
+
+    font-size: 54px;
+    font-weight: 900;
+
+    line-height: 1.05;
+}
+
+
+.runner-final-score-label {
+    display: block;
+
+    margin-bottom: 22px;
+
+    color: #77778d;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   Controls
+========================= */
+
+.runner-controls {
+    display: flex;
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 22px;
+}
+
+
+.runner-control-button {
+    width: 145px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 11px 18px;
+
+    border: 3px solid #343463;
+    border-radius: 12px;
+
+    box-shadow: 4px 4px 0 #343463;
+
+    color: #343463;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    touch-action: none;
+
+    transition:
+        transform 0.08s ease,
+        box-shadow 0.08s ease;
+}
+
+
+.runner-control-button span {
+    font-size: 22px;
+    line-height: 1;
+}
+
+
+.runner-control-button.jump {
+    background: #ffe11a;
+}
+
+
+.runner-control-button.duck {
+    background: #ff9b87;
+}
+
+
+.runner-control-button:hover {
+    transform: translate(1px, 1px);
+
+    box-shadow: 3px 3px 0 #343463;
+}
+
+
+.runner-control-button:active {
+    transform: translate(4px, 4px);
+
+    box-shadow: none;
+}
+
+
+/* =========================
+   Error
+========================= */
+
+.runner-error {
+    margin: 18px 0 0;
+
+    padding: 10px 15px;
+
+    background: #ffe0db;
+    color: #a93c39;
+
+    border: 2px solid #c94d49;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-align: center;
+}
+
+
+/* =========================
+   Loading / Error Page
+========================= */
+
+.runner-state-page {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background: #f6f2e9;
+
+    box-sizing: border-box;
+
+    color: #343463;
+}
+
+
+.runner-state-card {
+    width: min(420px, 90%);
+
+    padding: 30px;
+
+    background: white;
+
+    border: 3px solid #343463;
+    border-radius: 18px;
+
+    box-shadow: 6px 6px 0 #343463;
+
+    text-align: center;
+}
+
+
+.runner-state-card h1 {
+    margin: 0 0 10px;
+
+    font-size: 25px;
+}
+
+
+.runner-state-card p {
+    margin: 0;
+
+    color: #6f6f84;
+
+    font-size: 16px;
+}
+
+
+.runner-loading {
+    padding: 16px 24px;
+
+    background: #ffe11a;
+
+    border: 3px solid #343463;
+    border-radius: 13px;
+
+    box-shadow: 5px 5px 0 #343463;
+
+    font-size: 17px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 850px) {
+
+    .runner-header {
+        padding: 0 5%;
+    }
+
+
+    .runner-main {
+        width: 94%;
+
+        padding-top: 22px;
+    }
+
+
+    .runner-top h1 {
+        font-size: 29px;
+    }
+
+
+    .runner-stat {
+        min-width: 90px;
+
+        padding: 8px 12px;
+    }
+
+
+    .runner-stat strong {
+        font-size: 20px;
+    }
+
+
+    .runner-game-container {
+        border-radius: 15px;
+
+        box-shadow: 5px 5px 0 #343463;
+    }
+
+
+    .runner-overlay {
+        padding: 15px;
+    }
+
+
+    .runner-quiz {
+        padding: 20px;
+    }
+
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 600px) {
+
+    .runner-header {
+        height: 62px;
+
+        padding: 0 4%;
+    }
+
+
+    .runner-logo {
+        font-size: 18px;
+    }
+
+
+    .runner-logo-icon {
+        width: 36px;
+        height: 36px;
+
+        border-radius: 9px;
+
+        font-size: 18px;
+    }
+
+
+    .runner-player {
+        max-width: 130px;
+
+        padding: 7px 12px;
+
+        font-size: 13px;
+    }
+
+
+    .runner-main {
+        width: 94%;
+
+        padding: 18px 0 28px;
+    }
+
+
+    /* 上方資訊改上下排列 */
+
+    .runner-top {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 13px;
+    }
+
+
+    .runner-top h1 {
+        font-size: 27px;
+    }
+
+
+    .runner-stats {
+        width: 100%;
+    }
+
+
+    .runner-stat {
+        flex: 1;
+    }
+
+
+    /* Shield */
+
+    .runner-shield {
+        align-items: stretch;
+        flex-direction: column;
+
+        gap: 7px;
+    }
+
+
+    .runner-shield-info {
+        width: 100%;
+    }
+
+
+    /* 遊戲框 */
+
+    .runner-game-container {
+        border-width: 2px;
+
+        border-radius: 12px;
+
+        box-shadow: 4px 4px 0 #343463;
+    }
+
+
+    /*
+       手機畫面太窄時 Canvas 仍保持比例，
+       不會讓遊戲物理座標跟畫面比例跑掉
+    */
+
+    .runner-canvas {
+        min-height: 260px;
+
+        object-fit: cover;
+    }
+
+
+    .runner-overlay {
+        padding: 10px;
+    }
+
+
+    /* 開始 */
+
+    .runner-start {
+        width: 95%;
+
+        padding: 20px 16px;
+
+        border-width: 2px;
+
+        box-shadow: 4px 4px 0 #343463;
+    }
+
+
+    .runner-start h2 {
+        font-size: 22px;
+    }
+
+
+    .runner-start > p {
+        font-size: 14px;
+    }
+
+
+    .runner-start-character {
+        width: 48px;
+        height: 48px;
+    }
+
+
+    .runner-rules {
+        gap: 7px;
+
+        margin: 15px 0;
+    }
+
+
+    .runner-rules > span {
+        min-width: 0;
+
+        flex: 1;
+
+        padding: 8px;
+
+        font-size: 11px;
+    }
+
+
+    .runner-rules strong {
+        font-size: 14px;
+    }
+
+
+    /* Quiz */
+
+    .runner-quiz {
+        width: 97%;
+
+        padding: 16px;
+
+        border-width: 2px;
+
+        border-radius: 14px;
+
+        box-shadow: 4px 4px 0 #343463;
+    }
+
+
+    .runner-quiz h2 {
+        font-size: 20px;
+    }
+
+
+    .runner-quiz-hint {
+        margin-bottom: 12px;
+
+        font-size: 12px;
+    }
+
+
+    .runner-question {
+        padding: 12px 14px;
+
+        font-size: 16px;
+    }
+
+
+    .runner-options {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+    }
+
+
+    .runner-option {
+        min-height: 48px;
+
+        font-size: 14px;
+    }
+
+
+    .runner-option-letter {
+        width: 29px;
+        height: 29px;
+
+        flex-basis: 29px;
+    }
+
+
+    /* Game Over */
+
+    .runner-game-over {
+        width: 94%;
+
+        padding: 20px;
+
+        border-width: 2px;
+
+        box-shadow: 4px 4px 0 #343463;
+    }
+
+
+    .runner-game-over h2 {
+        font-size: 23px;
+    }
+
+
+    .runner-final-score {
+        font-size: 43px;
+    }
+
+
+    /* 控制按鈕 */
+
+    .runner-controls {
+        gap: 10px;
+
+        margin-top: 17px;
+    }
+
+
+    .runner-control-button {
+        width: 130px;
+
+        padding: 10px 12px;
+
+        border-width: 2px;
+
+        box-shadow: 3px 3px 0 #343463;
+
+        font-size: 14px;
+    }
+
+}
+
+
+/* =========================
+   Very Small Screen
+========================= */
+
+@media (max-width: 400px) {
+
+    .runner-player {
+        max-width: 95px;
+    }
+
+
+    .runner-mode-label {
+        font-size: 13px;
+    }
+
+
+    .runner-top h1 {
+        font-size: 24px;
+    }
+
+
+    .runner-stat strong {
+        font-size: 18px;
+    }
+
+
+    .runner-rules {
+        flex-direction: column;
+    }
+
+
+    .runner-controls {
+        width: 100%;
+    }
+
+
+    .runner-control-button {
+        flex: 1;
+
+        width: auto;
+    }
+
+}
